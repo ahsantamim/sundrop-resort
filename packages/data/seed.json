@@ -1,0 +1,729 @@
+{
+  "villas": [
+    {
+      "id": "villa-lagoon",
+      "slug": "lagoon-overwater",
+      "name": "Lagoon Overwater Villa",
+      "nameBn": "লেগুন ওভারওয়াটার ভিলা",
+      "category": "Overwater · Lagoon side",
+      "categoryBn": "জলের উপর · লেগুন পাশ",
+      "guests": 3,
+      "bedrooms": 1,
+      "sizeM2": 85,
+      "bed": "1 king",
+      "bedBn": "১টি কিং বেড",
+      "blurb": "A private deck above shallow water, with a glass panel in the floor.",
+      "blurbBn": "অগভীর পানির উপর নিজস্ব ডেক, মেঝেতে কাচের প্যানেল।",
+      "details": "Suspended over clear, shallow water on the quiet side of the demo island. Hand-woven jute, kantha throws and steps from the deck into the lagoon. This description is sample copy for the demo.",
+      "detailsBn": "ডেমো দ্বীপের শান্ত পাশে অগভীর স্বচ্ছ পানির উপর। হাতে বোনা পাট, কাঁথা আর ডেক থেকে লেগুনে নামা সিঁড়ি। এটি ডেমোর নমুনা লেখা।",
+      "amenities": [
+        {
+          "en": "Direct lagoon access",
+          "bn": "সরাসরি লেগুনে প্রবেশ"
+        },
+        {
+          "en": "King bed, kantha linen",
+          "bn": "কিং বেড, কাঁথার বিছানা"
+        },
+        {
+          "en": "Sample Wi-Fi note",
+          "bn": "নমুনা ওয়াই-ফাই নোট"
+        },
+        {
+          "en": "In-villa breakfast",
+          "bn": "ভিলায় সকালের নাস্তা"
+        },
+        {
+          "en": "Sunset deck & daybed",
+          "bn": "সানসেট ডেক ও ডেবেড"
+        },
+        {
+          "en": "Outdoor rain shower",
+          "bn": "খোলা আকাশের শাওয়ার"
+        }
+      ],
+      "pricePerNight": 18500,
+      "units": 8,
+      "image": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=1600&q=75",
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Overwater villa with a private deck above a turquoise lagoon",
+          "altBn": "ফিরোজা লেগুনের উপর নিজস্ব ডেকসহ ওভারওয়াটার ভিলা"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Bright villa bedroom",
+          "altBn": "উজ্জ্বল ভিলার শোবার ঘর"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Sun deck with loungers by the sea",
+          "altBn": "সমুদ্রের পাশে লাউঞ্জারসহ সান ডেক"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Aerial view of overwater walkways",
+          "altBn": "জলের উপরের হাঁটার পথের আকাশ থেকে দৃশ্য"
+        }
+      ]
+    },
+    {
+      "id": "villa-sunset",
+      "slug": "sunset-pool",
+      "name": "Sunset Pool Villa",
+      "nameBn": "সানসেট পুল ভিলা",
+      "category": "Beachfront · West facing",
+      "categoryBn": "সৈকত · পশ্চিমমুখী",
+      "guests": 4,
+      "bedrooms": 2,
+      "sizeM2": 78,
+      "bed": "2 bedrooms",
+      "bedBn": "২ বেডরুম",
+      "blurb": "A plunge pool and daybed aimed at the evening sky.",
+      "blurbBn": "সন্ধ্যার আকাশের দিকে একটি ছোট পুল ও ডেবেড।",
+      "details": "Two bedrooms and a private plunge pool on the west side of the demo site plan. Sample layout only.",
+      "detailsBn": "ডেমো সাইট প্ল্যানের পশ্চিম পাশে দুই বেডরুম ও নিজস্ব পুল। শুধু নমুনা বিন্যাস।",
+      "amenities": [
+        {
+          "en": "Private plunge pool",
+          "bn": "নিজস্ব ছোট পুল"
+        },
+        {
+          "en": "Two bedrooms",
+          "bn": "দুই বেডরুম"
+        },
+        {
+          "en": "Daybed",
+          "bn": "ডেবেড"
+        },
+        {
+          "en": "Outdoor rain shower",
+          "bn": "খোলা আকাশের শাওয়ার"
+        }
+      ],
+      "pricePerNight": 32000,
+      "units": 4,
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=75",
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Villa with a private pool facing the sea",
+          "altBn": "সমুদ্রমুখী নিজস্ব পুলসহ ভিলা"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Loungers on a sun deck",
+          "altBn": "সান ডেকে লাউঞ্জার"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=75",
+          "alt": "Calm shoreline at sunrise",
+          "altBn": "ভোরে শান্ত তটরেখা"
+        }
+      ]
+    },
+    {
+      "id": "villa-palm",
+      "slug": "palm-grove-family",
+      "name": "Palm Grove Family Villa",
+      "nameBn": "পাম গ্রোভ ফ্যামিলি ভিলা",
+      "category": "Garden · Family",
+      "categoryBn": "বাগান · পরিবার",
+      "guests": 5,
+      "bedrooms": 2,
+      "sizeM2": 96,
+      "bed": "2 bedrooms",
+      "bedBn": "২ বেডরুম",
+      "blurb": "Two bedrooms under the palms, with a hammock and a kids’ corner in the plan.",
+      "blurbBn": "নারকেল গাছের নিচে দুই বেডরুম, হ্যামক ও শিশুদের কোণ।",
+      "details": "A family plan set back from the beach path. Sample rate and sample floor area for the demo.",
+      "detailsBn": "সৈকতের পথ থেকে একটু ভিতরে একটি পারিবারিক প্ল্যান। ডেমোর নমুনা ভাড়া ও আয়তন।",
+      "amenities": [
+        {
+          "en": "Two bedrooms",
+          "bn": "দুই বেডরুম"
+        },
+        {
+          "en": "Hammocks",
+          "bn": "হ্যামক"
+        },
+        {
+          "en": "Beach path",
+          "bn": "সৈকতের পথ"
+        },
+        {
+          "en": "Kids’ corner in the plan",
+          "bn": "প্ল্যানে শিশুদের কোণ"
+        }
+      ],
+      "pricePerNight": 24000,
+      "units": 4,
+      "image": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1600&q=75",
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Beach house among palms",
+          "altBn": "নারকেল গাছের মধ্যে সৈকতের বাড়ি"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Bedroom interior",
+          "altBn": "শোবার ঘর"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Pool framed by palms",
+          "altBn": "নারকেল গাছে ঘেরা পুল"
+        }
+      ]
+    },
+    {
+      "id": "villa-mangrove",
+      "slug": "mangrove-hideaway",
+      "name": "Mangrove Hideaway",
+      "nameBn": "ম্যানগ্রোভ হাইডঅ্যাওয়ে",
+      "category": "Garden · Quiet",
+      "categoryBn": "বাগান · শান্ত",
+      "guests": 2,
+      "bedrooms": 1,
+      "sizeM2": 52,
+      "bed": "1 queen",
+      "bedBn": "১টি কুইন বেড",
+      "blurb": "A small stilt plan at the edge of the mangrove sketch.",
+      "blurbBn": "ম্যানগ্রোভের কিনারায় একটি ছোট স্টিল্ট প্ল্যান।",
+      "details": "The quietest sample plan in the set. One queen bed and an outdoor bath on the drawing.",
+      "detailsBn": "এই সেটের সবচেয়ে শান্ত নমুনা প্ল্যান। একটি কুইন বেড ও বাইরের স্নানঘর।",
+      "amenities": [
+        {
+          "en": "Queen bed",
+          "bn": "কুইন বেড"
+        },
+        {
+          "en": "Outdoor bath",
+          "bn": "বাইরের স্নানঘর"
+        },
+        {
+          "en": "Garden edge",
+          "bn": "বাগানের কিনারা"
+        }
+      ],
+      "pricePerNight": 15500,
+      "units": 3,
+      "image": "https://images.unsplash.com/photo-1606546008984-41818b01968a?auto=format&fit=crop&w=1600&q=75",
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1606546008984-41818b01968a?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Wooden boats on a Saint Martin’s shoreline",
+          "altBn": "সেন্ট মার্টিনের তীরে কাঠের নৌকা"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1505881502353-a1986add3762?auto=format&fit=crop&w=1600&q=75",
+          "alt": "A wooden jetty over clear water",
+          "altBn": "স্বচ্ছ পানির উপর কাঠের জেটি"
+        }
+      ]
+    },
+    {
+      "id": "villa-residence",
+      "slug": "lagoon-residence",
+      "name": "Two-Bedroom Lagoon Residence",
+      "nameBn": "দুই বেডরুমের লেগুন রেসিডেন্স",
+      "category": "Overwater · Family",
+      "categoryBn": "জলের উপর · পরিবার",
+      "guests": 6,
+      "bedrooms": 2,
+      "sizeM2": 120,
+      "bed": "2 bedrooms",
+      "bedBn": "২ বেডরুম",
+      "blurb": "The largest sample overwater plan, with a slide drawn down to the lagoon.",
+      "blurbBn": "সবচেয়ে বড় নমুনা ওভারওয়াটার প্ল্যান, লেগুনে নামার স্লাইডসহ।",
+      "details": "Shown as sold out on some sample dates so the calendar can demonstrate a full villa.",
+      "detailsBn": "কিছু নমুনা তারিখে পূর্ণ দেখানো হয়, যাতে ক্যালেন্ডারে বুকড রাত বোঝা যায়।",
+      "amenities": [
+        {
+          "en": "Two bedrooms",
+          "bn": "দুই বেডরুম"
+        },
+        {
+          "en": "Lagoon slide on the plan",
+          "bn": "প্ল্যানে লেগুন স্লাইড"
+        },
+        {
+          "en": "Family deck",
+          "bn": "পারিবারিক ডেক"
+        }
+      ],
+      "pricePerNight": 46000,
+      "units": 2,
+      "image": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1600&q=75",
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Overwater walkways from above",
+          "altBn": "উপর থেকে জলের উপরের হাঁটার পথ"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Lagoon villa deck",
+          "altBn": "লেগুন ভিলার ডেক"
+        }
+      ]
+    },
+    {
+      "id": "villa-honeymoon",
+      "slug": "honeymoon-sunset",
+      "name": "Honeymoon Sunset Villa",
+      "nameBn": "হানিমুন সানসেট ভিলা",
+      "category": "Overwater · Adults only",
+      "categoryBn": "জলের উপর · শুধু প্রাপ্তবয়স্ক",
+      "guests": 2,
+      "bedrooms": 1,
+      "sizeM2": 70,
+      "bed": "1 king",
+      "bedBn": "১টি কিং বেড",
+      "blurb": "A one-bedroom sample plan with a glass floor, marked adults only.",
+      "blurbBn": "কাচের মেঝেসহ এক বেডরুমের নমুনা প্ল্যান, শুধু প্রাপ্তবয়স্ক।",
+      "details": "Adults only in this demo: children cannot be added for this villa.",
+      "detailsBn": "এই ডেমোতে শুধু প্রাপ্তবয়স্ক: এই ভিলায় শিশু যোগ করা যায় না।",
+      "amenities": [
+        {
+          "en": "King bed",
+          "bn": "কিং বেড"
+        },
+        {
+          "en": "Glass floor",
+          "bn": "কাচের মেঝে"
+        },
+        {
+          "en": "Adults only",
+          "bn": "শুধু প্রাপ্তবয়স্ক"
+        }
+      ],
+      "pricePerNight": 28500,
+      "units": 3,
+      "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1600&q=75",
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Pool lit at night",
+          "altBn": "রাতে আলোকিত পুল"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=1600&q=75",
+          "alt": "Bedroom interior",
+          "altBn": "শোবার ঘর"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-phase-2",
+      "slug": "phase-2-lagoon-villas",
+      "name": "Phase II · Lagoon Villas",
+      "nameBn": "ধাপ ২ · লেগুন ভিলা",
+      "eyebrow": "Phase II",
+      "eyebrowBn": "ধাপ ২",
+      "location": "North lagoon, Saint Martin’s Island (demo site)",
+      "locationBn": "উত্তর লেগুন, সেন্ট মার্টিন দ্বীপ (ডেমো সাইট)",
+      "summary": "Twelve overwater villas on the calm northern lagoon. Sample project for the investor demo.",
+      "summaryBn": "শান্ত উত্তর লেগুনে বারোটি ওভারওয়াটার ভিলা। বিনিয়োগকারী ডেমোর নমুনা প্রকল্প।",
+      "story": "This project page shows how a closed demo portfolio could read. Share counts move when an admin approves an application. Yields and payback lines elsewhere in older comps are not shown as facts.",
+      "storyBn": "এই পাতা দেখায় একটি ডেমো পোর্টফোলিও কেমন পড়া যায়। অ্যাডমিন আবেদন অনুমোদন করলে শেয়ার সংখ্যা বদলায়। রিটার্নকে বাস্তব তথ্য হিসেবে দেখানো হয় না।",
+      "pricePerShare": 500000,
+      "illustrativeYield": "Sample label only — not a forecast",
+      "totalShares": 1000,
+      "soldShares": 680,
+      "reservedShares": 90,
+      "completion": "Q4 2027 · sample schedule",
+      "completionBn": "২০২৭-এর শেষ ভাগ · নমুনা সময়সূচি",
+      "image": "https://images.unsplash.com/photo-1516091877740-fde016699f2c?auto=format&fit=crop&w=2000&q=75",
+      "status": "open",
+      "milestones": [
+        {
+          "label": "Land & permits",
+          "labelBn": "জমি ও অনুমতি",
+          "state": "Marked done in the demo",
+          "stateBn": "ডেমোতে সম্পন্ন চিহ্নিত"
+        },
+        {
+          "label": "Foundations & jetty",
+          "labelBn": "ভিত্তি ও জেটি",
+          "state": "Marked done in the demo",
+          "stateBn": "ডেমোতে সম্পন্ন চিহ্নিত"
+        },
+        {
+          "label": "Villa structures",
+          "labelBn": "ভিলার কাঠামো",
+          "state": "Sample progress · 60%",
+          "stateBn": "নমুনা অগ্রগতি · ৬০%"
+        },
+        {
+          "label": "Interiors & handover",
+          "labelBn": "ইন্টেরিয়র ও হস্তান্তর",
+          "state": "Not started in this demo",
+          "stateBn": "এই ডেমোতে শুরু হয়নি"
+        }
+      ]
+    },
+    {
+      "id": "proj-spa",
+      "slug": "spa-wellness-pavilion",
+      "name": "Spa & Wellness Pavilion",
+      "nameBn": "স্পা ও ওয়েলনেস প্যাভিলিয়ন",
+      "eyebrow": "Spa & wellness",
+      "eyebrowBn": "স্পা ও ওয়েলনেস",
+      "location": "Garden pavilion, Saint Martin’s Island (demo site)",
+      "locationBn": "বাগান প্যাভিলিয়ন, সেন্ট মার্টিন দ্বীপ (ডেমো সাইট)",
+      "summary": "A kantha spa expansion drawn at 2,400 m². Sample project.",
+      "summaryBn": "২,৪০০ বর্গমিটারের একটি কাঁথা স্পা সম্প্রসারণ। নমুনা প্রকল্প।",
+      "story": "Use this page to send a sample application. An admin can approve or decline it.",
+      "storyBn": "এই পাতা থেকে একটি নমুনা আবেদন পাঠানো যায়। অ্যাডমিন সেটি অনুমোদন বা প্রত্যাখ্যান করতে পারেন।",
+      "pricePerShare": 350000,
+      "illustrativeYield": "Sample label only — not a forecast",
+      "totalShares": 600,
+      "soldShares": 252,
+      "reservedShares": 0,
+      "completion": "Q2 2027 · sample schedule",
+      "completionBn": "২০২৭-এর দ্বিতীয় ভাগ · নমুনা সময়সূচি",
+      "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1600&q=75",
+      "status": "open",
+      "milestones": [
+        {
+          "label": "Design",
+          "labelBn": "নকশা",
+          "state": "Marked done in the demo",
+          "stateBn": "ডেমোতে সম্পন্ন চিহ্নিত"
+        },
+        {
+          "label": "Structure",
+          "labelBn": "কাঠামো",
+          "state": "Sample progress · 35%",
+          "stateBn": "নমুনা অগ্রগতি · ৩৫%"
+        }
+      ]
+    },
+    {
+      "id": "proj-mangrove",
+      "slug": "mangrove-eco-lodges",
+      "name": "Mangrove Eco-Lodges",
+      "nameBn": "ম্যানগ্রোভ ইকো-লজ",
+      "eyebrow": "Eco-lodges",
+      "eyebrowBn": "ইকো-লজ",
+      "location": "Mangrove edge, Saint Martin’s Island (demo site)",
+      "locationBn": "ম্যানগ্রোভের কিনারা, সেন্ট মার্টিন দ্বীপ (ডেমো সাইট)",
+      "summary": "Eighteen stilt lodges on a sample solar plan.",
+      "summaryBn": "একটি নমুনা সৌর পরিকল্পনায় আঠারোটি স্টিল্ট লজ।",
+      "story": "A third sample project so the portfolio page is not a single card.",
+      "storyBn": "পোর্টফোলিও পাতায় একাধিক কার্ড রাখতে তৃতীয় নমুনা প্রকল্প।",
+      "pricePerShare": 400000,
+      "illustrativeYield": "Sample label only — not a forecast",
+      "totalShares": 800,
+      "soldShares": 120,
+      "reservedShares": 0,
+      "completion": "Q1 2028 · sample schedule",
+      "completionBn": "২০২৮-এর প্রথম ভাগ · নমুনা সময়সূচি",
+      "image": "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=2000&q=75",
+      "status": "open",
+      "milestones": [
+        {
+          "label": "Site sketch",
+          "labelBn": "সাইট স্কেচ",
+          "state": "Sample progress · 15%",
+          "stateBn": "নমুনা অগ্রগতি · ১৫%"
+        }
+      ]
+    }
+  ],
+  "bookings": [
+    {
+      "id": "bkg-demo",
+      "reference": "SDR-DEMO-2610",
+      "token": "SdDemoGuestLinkToken0000000001ab",
+      "villaId": "villa-lagoon",
+      "checkIn": "2026-12-14",
+      "checkOut": "2026-12-17",
+      "adults": 2,
+      "children": 0,
+      "guestName": "Farzana Rahman",
+      "mobile": "+880 1712-345678",
+      "email": "farzana.rahman@sundrop.demo",
+      "whatsappUpdates": true,
+      "status": "pending",
+      "total": 55500,
+      "nights": 3,
+      "createdAt": "2026-10-30T09:58:00.000Z"
+    },
+    {
+      "id": "bkg-tanvir",
+      "reference": "SDR-9P2M-2612",
+      "token": "SdDemoGuestLinkToken0000000002cd",
+      "villaId": "villa-sunset",
+      "checkIn": "2026-12-18",
+      "checkOut": "2026-12-21",
+      "adults": 4,
+      "children": 0,
+      "guestName": "Tanvir Ahmed",
+      "mobile": "+880 1819-220145",
+      "email": "tanvir.ahmed@sundrop.demo",
+      "whatsappUpdates": false,
+      "status": "pending",
+      "total": 96000,
+      "nights": 3,
+      "createdAt": "2026-10-30T08:40:00.000Z"
+    },
+    {
+      "id": "bkg-imran",
+      "reference": "SDR-2D7X-2612",
+      "token": "SdDemoGuestLinkToken0000000003ef",
+      "villaId": "villa-palm",
+      "checkIn": "2026-12-20",
+      "checkOut": "2026-12-24",
+      "adults": 4,
+      "children": 1,
+      "guestName": "Imran Hossain",
+      "mobile": "+880 1555-781203",
+      "email": "imran.hossain@sundrop.demo",
+      "whatsappUpdates": true,
+      "status": "confirmed",
+      "total": 96000,
+      "nights": 4,
+      "createdAt": "2026-10-22T06:12:00.000Z"
+    },
+    {
+      "id": "bkg-sadia",
+      "reference": "SDR-5L1C-2611",
+      "token": "SdDemoGuestLinkToken0000000004gh",
+      "villaId": "villa-honeymoon",
+      "checkIn": "2026-11-28",
+      "checkOut": "2026-11-30",
+      "adults": 2,
+      "children": 0,
+      "guestName": "Sadia Islam",
+      "mobile": "+880 1911-904512",
+      "email": "sadia.islam@sundrop.demo",
+      "whatsappUpdates": false,
+      "status": "confirmed",
+      "total": 57000,
+      "nights": 2,
+      "createdAt": "2026-10-12T11:00:00.000Z"
+    },
+    {
+      "id": "bkg-daniel",
+      "reference": "SDR-3H8D-2611",
+      "token": "SdDemoGuestLinkToken0000000005ij",
+      "villaId": "villa-lagoon",
+      "checkIn": "2026-11-22",
+      "checkOut": "2026-11-25",
+      "adults": 2,
+      "children": 0,
+      "guestName": "Daniel Kim",
+      "mobile": "+65 9123 4567",
+      "email": "daniel.kim@sundrop.demo",
+      "whatsappUpdates": false,
+      "status": "cancelled",
+      "total": 55500,
+      "nights": 3,
+      "createdAt": "2026-10-02T04:20:00.000Z",
+      "cancelReason": "Change of travel plans"
+    },
+    {
+      "id": "bkg-nusrat",
+      "reference": "SDR-8Q6R-2611",
+      "token": "SdDemoGuestLinkToken0000000006kl",
+      "villaId": "villa-mangrove",
+      "checkIn": "2026-11-15",
+      "checkOut": "2026-11-17",
+      "adults": 2,
+      "children": 0,
+      "guestName": "Nusrat Jahan",
+      "mobile": "+880 1678-332901",
+      "email": "nusrat.jahan@sundrop.demo",
+      "whatsappUpdates": true,
+      "status": "confirmed",
+      "total": 31000,
+      "nights": 2,
+      "createdAt": "2026-09-30T09:00:00.000Z"
+    },
+    {
+      "id": "bkg-mahmud",
+      "reference": "SDR-1Z4T-2612",
+      "token": "SdDemoGuestLinkToken0000000007mn",
+      "villaId": "villa-residence",
+      "checkIn": "2026-12-01",
+      "checkOut": "2026-12-05",
+      "adults": 5,
+      "children": 1,
+      "guestName": "Mahmud Chowdhury",
+      "mobile": "+880 1733-450012",
+      "email": "mahmud.chowdhury@sundrop.demo",
+      "whatsappUpdates": false,
+      "status": "pending",
+      "total": 184000,
+      "nights": 4,
+      "createdAt": "2026-10-29T15:10:00.000Z"
+    },
+    {
+      "id": "bkg-ayesha",
+      "reference": "SDR-6W3E-2612",
+      "token": "SdDemoGuestLinkToken0000000008op",
+      "villaId": "villa-lagoon",
+      "checkIn": "2026-12-08",
+      "checkOut": "2026-12-10",
+      "adults": 2,
+      "children": 1,
+      "guestName": "Ayesha Siddiqua",
+      "mobile": "+880 1306-771288",
+      "email": "ayesha.siddiqua@sundrop.demo",
+      "whatsappUpdates": true,
+      "status": "confirmed",
+      "total": 37000,
+      "nights": 2,
+      "createdAt": "2026-10-18T07:45:00.000Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": "APP-2026-1187",
+      "projectId": "proj-mangrove",
+      "name": "Ahsan Karim",
+      "email": "ahsan.karim@sundrop.demo",
+      "mobile": "+880 1711-555012",
+      "shares": 4,
+      "status": "under_review",
+      "note": "",
+      "createdAt": "2026-10-30T04:02:00.000Z"
+    },
+    {
+      "id": "APP-2026-1182",
+      "projectId": "proj-spa",
+      "name": "Nadia Chowdhury",
+      "email": "nadia.chowdhury@sundrop.demo",
+      "mobile": "+880 1811-220045",
+      "shares": 10,
+      "status": "under_review",
+      "note": "",
+      "createdAt": "2026-10-29T12:15:00.000Z"
+    },
+    {
+      "id": "APP-2026-1174",
+      "projectId": "proj-phase-2",
+      "name": "Kamal Uddin",
+      "email": "kamal.uddin@sundrop.demo",
+      "mobile": "+880 1912-008811",
+      "shares": 2,
+      "status": "under_review",
+      "note": "",
+      "createdAt": "2026-10-28T09:40:00.000Z"
+    }
+  ],
+  "investors": [
+    {
+      "id": "inv-shirin",
+      "email": "shirin.akter@sundrop.demo",
+      "passwordHash": "78c591ba809ef832cac41ce9b610a094905ed40eb47884932a0633f981f2afd0",
+      "name": "Shirin Akter",
+      "mobile": "+880 1711-445566",
+      "tier": "Sample tier",
+      "code": "INV-0412"
+    }
+  ],
+  "admins": [
+    {
+      "id": "adm-rafiq",
+      "email": "rafiq.hasan@sundrop.demo",
+      "passwordHash": "8e6ab1ff5650161d5d0ed1bb36407d6bc4f76d56e62945b4ab7d063e30d459e9",
+      "name": "Rafiq Hasan",
+      "role": "Demo admin"
+    }
+  ],
+  "holdings": [
+    {
+      "id": "hold-1",
+      "investorId": "inv-shirin",
+      "projectId": "proj-phase-2",
+      "shares": 4,
+      "amount": 2000000
+    },
+    {
+      "id": "hold-2",
+      "investorId": "inv-shirin",
+      "projectId": "proj-spa",
+      "shares": 2,
+      "amount": 700000
+    }
+  ],
+  "payouts": [
+    {
+      "id": "PAY-SAMPLE-Q3",
+      "investorId": "inv-shirin",
+      "projectId": "proj-phase-2",
+      "date": "2026-10-15",
+      "description": "Q3 sample distribution",
+      "descriptionBn": "তৃতীয় প্রান্তিকের নমুনা বণ্টন",
+      "amount": 85500,
+      "status": "paid"
+    },
+    {
+      "id": "PAY-SAMPLE-Q3S",
+      "investorId": "inv-shirin",
+      "projectId": "proj-spa",
+      "date": "2026-10-15",
+      "description": "Q3 sample distribution",
+      "descriptionBn": "তৃতীয় প্রান্তিকের নমুনা বণ্টন",
+      "amount": 18400,
+      "status": "paid"
+    },
+    {
+      "id": "PAY-SAMPLE-Q2",
+      "investorId": "inv-shirin",
+      "projectId": "proj-phase-2",
+      "date": "2026-07-15",
+      "description": "Q2 sample distribution",
+      "descriptionBn": "দ্বিতীয় প্রান্তিকের নমুনা বণ্টন",
+      "amount": 79800,
+      "status": "paid"
+    },
+    {
+      "id": "PAY-SAMPLE-Q4",
+      "investorId": "inv-shirin",
+      "projectId": "proj-phase-2",
+      "date": "2027-01-15",
+      "description": "Q4 sample line (scheduled)",
+      "descriptionBn": "চতুর্থ প্রান্তিকের নমুনা লাইন (নির্ধারিত)",
+      "amount": 88000,
+      "status": "scheduled"
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc-q3",
+      "investorId": "inv-shirin",
+      "title": "Q3 2026 sample investor note",
+      "titleBn": "২০২৬ তৃতীয় প্রান্তিকের নমুনা নোট",
+      "kind": "Quarterly report",
+      "date": "2026-10-20",
+      "note": "Placeholder text. Not a financial statement."
+    },
+    {
+      "id": "doc-cert",
+      "investorId": "inv-shirin",
+      "title": "Sample share certificate · Phase II",
+      "titleBn": "নমুনা শেয়ার সনদ · ধাপ ২",
+      "kind": "Certificate",
+      "date": "2025-06-02",
+      "note": "Placeholder. Not a legal certificate."
+    },
+    {
+      "id": "doc-update",
+      "investorId": "inv-shirin",
+      "title": "September 2026 construction note",
+      "titleBn": "সেপ্টেম্বর ২০২৬ নির্মাণ নোট",
+      "kind": "Project update",
+      "date": "2026-09-30",
+      "note": "Placeholder progress note."
+    }
+  ],
+  "sessions": []
+}
