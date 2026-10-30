@@ -1,0 +1,61 @@
+/*
+  SUNDROP Eco Resort design tokens.
+  Taken from the approved landing page and shared by every app.
+*/
+@theme {
+  --color-teal-900: #0b4f4a;
+  --color-teal-700: #0e6b63;
+  --color-teal-500: #2e8c82;
+  --color-teal-100: #d6ebe7;
+  --color-sand: #f3e9da;
+  --color-sand-400: #e4d3b8;
+  --color-ivory: #fbf7f0;
+  --color-coral: #e86a4a;
+  --color-marigold: #f2b23e;
+  --color-navy: #0f1e2e;
+  --color-navy-800: #16293d;
+  --color-navy-700: #1f3650;
+  --color-gold: #c9a227;
+  --color-gold-300: #e3cb7a;
+  --color-ink: #1c2422;
+  --color-ink-600: #4a5653;
+  --color-ink-400: #7b8784;
+  --color-line: #e6ded0;
+  --color-palm: #3e8e5a;
+  --color-canvas: #e9e4da;
+  --color-amber-soft: #fbefd3;
+  --color-amber-ink: #8a5e0b;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-bn: var(--font-hind), var(--font-manrope), sans-serif;
+  --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+:root {
+  --teal-900: #0b4f4a;
+  --teal-700: #0e6b63;
+  --teal-500: #2e8c82;
+  --teal-100: #d6ebe7;
+  --sand: #f3e9da;
+  --sand-400: #e4d3b8;
+  --ivory: #fbf7f0;
+  --white: #fff;
+  --coral: #e86a4a;
+  --marigold: #f2b23e;
+  --navy: #0f1e2e;
+  --navy-800: #16293d;
+  --navy-700: #1f3650;
+  --gold: #c9a227;
+  --gold-300: #e3cb7a;
+  --ink: #1c2422;
+  --ink-600: #4a5653;
+  --ink-400: #7b8784;
+  --line: #e6ded0;
+  --green: #3e8e5a;
+  --serif: var(--font-fraunces), Georgia, serif;
+  --sans: var(--font-manrope), system-ui, sans-serif;
+  --bn: var(--font-hind), "Noto Sans Bengali", sans-serif;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --pad: clamp(20px, 5.5vw, 104px);
+  --maxw: 1440px;
+}

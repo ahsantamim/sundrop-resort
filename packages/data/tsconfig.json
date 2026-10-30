@@ -1,0 +1,9 @@
+{
+  "extends": "../config/tsconfig/base.json",
+  "compilerOptions": {
+    "lib": ["esnext"],
+    "types": ["node"],
+    "jsx": "preserve"
+  },
+  "include": ["src/**/*.ts"]
+}
