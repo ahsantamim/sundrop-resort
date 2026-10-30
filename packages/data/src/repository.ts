@@ -1,6 +1,7 @@
 import { randomBytes, timingSafeEqual } from "node:crypto";
 import { existsSync } from "node:fs";
 import { mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import { createSeed, hashPassword } from "./seed";
 import type {
@@ -24,6 +25,8 @@ const BLOCKING: BookingStatus[] = ["pending", "confirmed"];
 
 function resolveStorePath() {
   if (process.env.SUNDROP_DATA_FILE) return process.env.SUNDROP_DATA_FILE;
+  // Serverless hosts (Vercel) only allow writes under the temp dir.
+  if (process.env.VERCEL) return path.join(tmpdir(), "sundrop/store.json");
   let dir = process.cwd();
   for (let i = 0; i < 8; i += 1) {
     if (existsSync(path.join(dir, "pnpm-workspace.yaml"))) {
