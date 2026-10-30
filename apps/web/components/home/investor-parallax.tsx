@@ -3,84 +3,31 @@
 import { photos } from "@sundrop/data/images";
 import { Button, siteUrls, useI18n } from "@sundrop/ui";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import { ParallaxLayers, useScrubbedLayers } from "./scrubbed-layers";
 
 const layers = [
-  { src: photos.reef, className: "layer l1", alt: "Aerial of a small island in clear water, standing in for Saint Martin’s", depth: 8 },
-  { src: photos.coast, className: "layer l2", alt: "A long sandy coastline", depth: 16 },
-  { src: photos.land, className: "layer l3", alt: "Aerial of open land, standing in for sample plots", depth: 26 },
+  { src: photos.reef, alt: "Aerial of a small island in clear water, standing in for Saint Martin’s", depth: 8 },
+  { src: photos.coast, alt: "A long sandy coastline", depth: 16 },
+  { src: photos.land, alt: "Aerial of open land, standing in for sample plots", depth: 26 },
 ];
 
 export function InvestorParallax() {
   const { t } = useI18n();
   const root = useRef<HTMLElement>(null);
   const [phase, setPhase] = useState(0);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let ctx: { revert: () => void } | null = null;
-    void (async () => {
-      const { default: gsap } = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      gsap.registerPlugin(ScrollTrigger);
-      ctx = gsap.context(() => {
-        const frame = root.current?.querySelector(".arch");
-        if (frame) {
-          gsap.fromTo(
-            frame,
-            { clipPath: "inset(12% 8% 0% 8% round 999px 999px 28px 28px)" },
-            { clipPath: "inset(0% 0% 0% 0% round 999px 999px 28px 28px)", ease: "none", scrollTrigger: { trigger: root.current, start: "top 80%", end: "top 20%", scrub: true } },
-          );
-        }
-        layers.forEach((layer, index) => {
-          const node = root.current?.querySelectorAll(".layer")[index];
-          if (!node) return;
-          gsap.fromTo(
-            node,
-            { yPercent: -layer.depth * 0.35 },
-            { yPercent: layer.depth * 0.45, ease: "none", scrollTrigger: { trigger: root.current, start: "top bottom", end: "bottom top", scrub: true } },
-          );
-        });
-        const first = root.current?.querySelector(".l1");
-        const second = root.current?.querySelector(".l2");
-        const third = root.current?.querySelector(".l3");
-        if (first && second && third) {
-          gsap.timeline({
-            scrollTrigger: {
-              trigger: root.current,
-              start: "top 55%",
-              end: "bottom 45%",
-              scrub: true,
-              onUpdate: (self) => {
-                const next = self.progress < 0.34 ? 0 : self.progress < 0.67 ? 1 : 2;
-                setPhase((current) => (current === next ? current : next));
-              },
-            },
-          })
-            .to(first, { opacity: 0.2, ease: "none" }, 0.34)
-            .fromTo(second, { opacity: 0 }, { opacity: 1, ease: "none" }, 0.18)
-            .to(second, { opacity: 0.28, ease: "none" }, 0.67)
-            .fromTo(third, { opacity: 0 }, { opacity: 1, ease: "none" }, 0.55);
-        }
-      }, root);
-    })();
-    return () => ctx?.revert();
+  const onPhase = useCallback((next: number) => {
+    setPhase((current) => (current === next ? current : next));
   }, []);
+  useScrubbedLayers(root, true, onPhase);
 
   return (
     <section className="sec invest-pin" id="invest" ref={root}>
       <div className="wrap amen-grid">
         <div className="amen-sticky">
           <div className="photo arch" style={{ background: "#0f1e2e" }}>
-            <div className="ip-layers">
-              {layers.map((layer) => (
-                <div className={layer.className} key={layer.src}>
-                  <Image src={layer.src} alt={layer.alt} fill sizes="(max-width: 900px) 100vw, 46vw" loading="eager" />
-                </div>
-              ))}
-            </div>
+            <ParallaxLayers layers={layers} eager />
             <div className="shade" />
             <div className="cap">
               <b>{t("Saint Martin’s", "সেন্ট মার্টিন")}</b>

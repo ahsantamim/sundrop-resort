@@ -1,11 +1,13 @@
 "use client";
 
+import { photos } from "@sundrop/data/images";
 import type { Villa } from "@sundrop/data/types";
 import { Button, formatBdt, useI18n } from "@sundrop/ui";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ParallaxLayers, startScrubbedLayers } from "./scrubbed-layers";
 
 const experiences = [
   {
@@ -50,33 +52,95 @@ const experiences = [
   },
 ];
 
+const frameLayers = [
+  {
+    src: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1400&q=75",
+    alt: "Resort pool framed by coconut palms",
+    altBn: "নারকেল গাছে ঘেরা রিসোর্টের পুল",
+    title: "The Lagoon Pool",
+    titleBn: "লেগুন পুল",
+    depth: 8,
+  },
+  {
+    src: photos.jetty,
+    alt: experiences[2]?.alt ?? "Wooden jetty over clear water",
+    altBn: experiences[2]?.alt ?? "Wooden jetty over clear water",
+    title: experiences[2]?.title ?? "Reef & Jetty",
+    titleBn: experiences[2]?.titleBn ?? "রিফ ও জেটি",
+    depth: 16,
+  },
+  {
+    src: photos.deck,
+    alt: experiences[3]?.alt ?? "Sun loungers by the water",
+    altBn: experiences[3]?.alt ?? "Sun loungers by the water",
+    title: experiences[3]?.title ?? "Sunset Deck",
+    titleBn: experiences[3]?.titleBn ?? "সানসেট ডেক",
+    depth: 26,
+  },
+];
+
+function startExperienceFrame(root: HTMLElement | null): () => void {
+  if (!root) return () => {};
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return () => {};
+
+  let ctx: { revert: () => void } | null = null;
+  let cancelled = false;
+
+  void (async () => {
+    const { default: gsap } = await import("gsap");
+    const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+    if (cancelled) return;
+    gsap.registerPlugin(ScrollTrigger);
+    ctx = gsap.context(() => {
+      const frame = root.querySelector("#archPhoto");
+      const image = frame?.querySelector(".l1 img");
+      if (frame) {
+        gsap.fromTo(
+          frame,
+          { clipPath: "inset(14% 10% 0% 10% round 999px 999px 28px 28px)" },
+          { clipPath: "inset(0% 0% 0% 0% round 999px 999px 28px 28px)", ease: "none", scrollTrigger: { trigger: "#amenities", start: "top 85%", end: "top 15%", scrub: true } },
+        );
+      }
+      if (image) {
+        gsap.fromTo(image, { scale: 1.25 }, { scale: 1, ease: "none", scrollTrigger: { trigger: "#amenities", start: "top bottom", end: "bottom top", scrub: true } });
+      }
+    }, root);
+  })();
+
+  return () => {
+    cancelled = true;
+    ctx?.revert();
+  };
+}
+
 export function Stay({ villas }: { villas: Villa[] }) {
   const { t, lang } = useI18n();
   const root = useRef<HTMLElement>(null);
+  const [phase, setPhase] = useState(0);
+  const activeLayer = frameLayers[phase] ?? frameLayers[0];
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let ctx: { revert: () => void } | null = null;
-    void (async () => {
-      const { default: gsap } = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      gsap.registerPlugin(ScrollTrigger);
-      ctx = gsap.context(() => {
-        const frame = root.current?.querySelector("#archPhoto");
-        const image = frame?.querySelector("img");
-        if (frame) {
-          gsap.fromTo(
-            frame,
-            { clipPath: "inset(14% 10% 0% 10% round 999px 999px 28px 28px)" },
-            { clipPath: "inset(0% 0% 0% 0% round 999px 999px 28px 28px)", ease: "none", scrollTrigger: { trigger: "#amenities", start: "top 85%", end: "top 15%", scrub: true } },
-          );
-        }
-        if (image) {
-          gsap.fromTo(image, { scale: 1.25 }, { scale: 1, ease: "none", scrollTrigger: { trigger: "#amenities", start: "top bottom", end: "bottom top", scrub: true } });
-        }
-      }, root);
-    })();
-    return () => ctx?.revert();
+    const media = window.matchMedia("(max-width: 760px)");
+    let stop = () => {};
+
+    const bind = () => {
+      stop();
+      setPhase(0);
+      if (media.matches) {
+        stop = startScrubbedLayers(root.current, {
+          onPhase: (next) => setPhase((current) => (current === next ? current : next)),
+        });
+        return;
+      }
+      stop = startExperienceFrame(root.current);
+    };
+
+    bind();
+    media.addEventListener("change", bind);
+    return () => {
+      media.removeEventListener("change", bind);
+      stop();
+    };
   }, []);
 
   return (
@@ -144,9 +208,20 @@ export function Stay({ villas }: { villas: Villa[] }) {
         <div className="wrap amen-grid">
           <div className="amen-sticky">
             <div className="photo arch" id="archPhoto">
+              <ParallaxLayers
+                layers={frameLayers.map((layer) => ({ src: layer.src, alt: t(layer.alt, layer.altBn), depth: layer.depth }))}
+                sizes="(max-width: 900px) 100vw, 45vw"
+                activeIndex={phase}
+              />
               <div className="shade" />
-              <Image src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1400&q=75" alt={t("Resort pool framed by coconut palms", "নারকেল গাছে ঘেরা রিসোর্টের পুল")} fill sizes="(max-width: 900px) 100vw, 45vw" />
-              <div className="cap"><b>{t("The Lagoon Pool", "লেগুন পুল")}</b><span>{t("Sample hours 6 am – 10 pm", "নমুনা সময় সকাল ৬টা – রাত ১০টা")}</span></div>
+              <div className="cap">
+                <b className="exp-cap-desktop">{t("The Lagoon Pool", "লেগুন পুল")}</b>
+                <span className="exp-cap-desktop">{t("Sample hours 6 am – 10 pm", "নমুনা সময় সকাল ৬টা – রাত ১০টা")}</span>
+                <b className="exp-cap-mobile">{t(activeLayer?.title ?? "The Lagoon Pool", activeLayer?.titleBn ?? "লেগুন পুল")}</b>
+                <span className="dots exp-cap-mobile" aria-hidden="true">
+                  {frameLayers.map((layer, index) => <i key={layer.src} className={phase === index ? "on" : ""} />)}
+                </span>
+              </div>
             </div>
           </div>
           <div className="amen-list">
