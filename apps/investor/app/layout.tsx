@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Hind_Siliguri, Manrope } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces" });
@@ -16,7 +17,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${manrope.variable} ${hind.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Script id="partner-theme" strategy="beforeInteractive">
+          {`try{document.documentElement.dataset.theme=localStorage.getItem("partner-theme")==="dark"?"dark":"light"}catch(e){}`}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }
