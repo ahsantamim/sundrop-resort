@@ -4,7 +4,11 @@
   "packageManager": "pnpm@10.33.4",
   "scripts": {
     "dev": "turbo dev --ui=stream",
+    "dev:web": "turbo dev --filter=@sundrop/web",
+    "dev:investor": "turbo dev --filter=@sundrop/investor",
+    "dev:admin": "turbo dev --filter=@sundrop/admin",
     "build": "turbo build",
+    "start": "turbo start",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck"
   },

@@ -1,7 +1,7 @@
 import { getRepo } from "@sundrop/data";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { BookingWizard } from "@/components/book/wizard";
+import { addDays, todayIso } from "@/lib/dates";
 
 export const metadata: Metadata = { title: "Book your stay" };
 
@@ -15,26 +15,20 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
   const villas = await getRepo().listVillas();
   const villa = villas.find((item) => item.slug === slug) ?? villas[0];
   if (!villa) {
-    return <main className="page-hero wrap"><p>No villas are loaded.</p></main>;
+    return <main className="wrap page-head"><p className="lede">No villas are loaded.</p></main>;
   }
-  const today = new Date();
-  const end = new Date();
-  end.setDate(end.getDate() + 420);
-  const iso = (date: Date) => date.toISOString().slice(0, 10);
-  const blocked = await getRepo().blockedDates(villa.slug, iso(today), iso(end));
+  const today = todayIso();
+  const blocked = await getRepo().blockedDates(villa.slug, today, addDays(today, 430));
   return (
-    <>
-      {!slug ? <p className="wrap" style={{ paddingTop: 120 }}><Link href="/villas">Choose a villa first →</Link></p> : null}
-      <BookingWizard
-        villa={villa}
-        blocked={blocked}
-        initial={{
-          checkIn: one(sp.checkIn),
-          checkOut: one(sp.checkOut),
-          adults: Number(one(sp.adults) || 2),
-          children: Number(one(sp.children) || 0),
-        }}
-      />
-    </>
+    <BookingWizard
+      villa={villa}
+      blocked={blocked}
+      initial={{
+        checkIn: one(sp.checkIn),
+        checkOut: one(sp.checkOut),
+        adults: Number(one(sp.adults) || 2),
+        children: Number(one(sp.children) || 0),
+      }}
+    />
   );
 }

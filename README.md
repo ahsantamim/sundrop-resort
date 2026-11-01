@@ -8,9 +8,9 @@ Every price, yield, review, certificate and headcount on the site is **placehold
 
 | App | Port | What it does |
 | --- | --- | --- |
-| `apps/web` | [http://127.0.0.1:4210](http://127.0.0.1:4210) | Public site, booking flow, guest manage link |
-| `apps/investor` | [http://127.0.0.1:4211](http://127.0.0.1:4211) | Investor portal |
-| `apps/admin` | [http://127.0.0.1:4212](http://127.0.0.1:4212) | Admin console |
+| `apps/web` | [http://localhost:3000](http://localhost:3000) | Public site, booking flow, guest manage link |
+| `apps/investor` | [http://localhost:3001](http://localhost:3001) | Investor portal |
+| `apps/admin` | [http://localhost:3002](http://localhost:3002) | Admin console |
 
 ## Setup
 
@@ -42,7 +42,7 @@ Admin console
 Sample guest booking (already in the store)
 
 - Reference: `SDR-DEMO-2610`
-- Private link: [http://127.0.0.1:4210/b/SdDemoGuestLinkToken0000000001ab](http://127.0.0.1:4210/b/SdDemoGuestLinkToken0000000001ab)
+- Private link: [http://localhost:3000/b/SdDemoGuestLinkToken0000000001ab](http://localhost:3000/b/SdDemoGuestLinkToken0000000001ab)
 
 The manage page at `/manage` also opens that sample link. A reference alone is not enough; the private token is the key.
 

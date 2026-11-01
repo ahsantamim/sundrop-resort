@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Scenery } from "@/components/chrome/scenery";
 
 const pages: Record<string, { title: string; body: string }> = {
   privacy: {
@@ -41,11 +43,28 @@ export default async function InfoPage({ params }: { params: Promise<{ slug: str
   if (!page) notFound();
   return (
     <main>
-      <div className="wrap page-hero" style={{ paddingBottom: 80, maxWidth: 800 }}>
-        <p className="sample">Demo notice</p>
-        <h1>{page.title}</h1>
-        <p className="lede">{page.body}</p>
+      <div className="wrap page-head">
+        <span className="over">Demo notice</span>
+        <h1 className="serif-swap">{page.title}</h1>
       </div>
+      <section className="sec tight flush-top">
+        <Scenery />
+        <div className="wrap">
+          <div className="bento">
+            <article className="tile s8">
+              <p className="lede" style={{ fontSize: 18 }}>{page.body}</p>
+            </article>
+            <article className="tile sand s4">
+              <span className="over">More notices</span>
+              {Object.entries(pages).map(([key, item]) => (
+                <Link className="more" href={`/info/${key}`} key={key} aria-current={item === page ? "page" : undefined} style={item === page ? { color: "var(--coral)" } : undefined}>
+                  {item.title}
+                </Link>
+              ))}
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
