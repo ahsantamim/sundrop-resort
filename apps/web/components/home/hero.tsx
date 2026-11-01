@@ -1,42 +1,21 @@
 "use client";
 
 import { photos } from "@sundrop/data/images";
-import { Button, useI18n } from "@sundrop/ui";
-import { ArrowRight } from "lucide-react";
+import { useI18n } from "@sundrop/ui";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { SearchBar } from "@/components/booking/search-bar";
+import { addDays, todayIso } from "@/lib/dates";
 import { WaterCanvas } from "./water-canvas";
-
-function iso(date: Date) {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
-}
 
 export function Hero() {
   const { t, lang } = useI18n();
-  const router = useRouter();
   const heroRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const today = useMemo(() => {
-    const date = new Date();
-    date.setHours(0, 0, 0, 0);
-    return date;
-  }, []);
   const defaults = useMemo(() => {
-    const checkIn = new Date(today);
-    checkIn.setDate(checkIn.getDate() + 14);
-    const checkOut = new Date(checkIn);
-    checkOut.setDate(checkOut.getDate() + 3);
-    return { checkIn: iso(checkIn), checkOut: iso(checkOut) };
-  }, [today]);
-  const [checkIn, setCheckIn] = useState(defaults.checkIn);
-  const [checkOut, setCheckOut] = useState(defaults.checkOut);
-  const [adults, setAdults] = useState(2);
-  const [children, setChildren] = useState(0);
-  const [open, setOpen] = useState(false);
+    const checkIn = addDays(todayIso(), 14);
+    return { checkIn, checkOut: addDays(checkIn, 3) };
+  }, []);
   const [toast, setToast] = useState<string | null>(null);
 
   useEffect(() => {
@@ -76,7 +55,7 @@ export function Hero() {
         if (words?.length) {
           tl.fromTo(words, { yPercent: 110 }, { yPercent: 0, duration: 0.9, stagger: 0.06 }, "<0.1");
         }
-        tl.fromTo(".hero-over, .hero-lede, .search, .hero-foot", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, "-=0.8");
+        tl.fromTo(".hero-over, .hero-lede, .hero-search, .hero-foot", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, "-=0.8");
         gsap.to(".hero-media", {
           yPercent: 18,
           ease: "none",
@@ -90,29 +69,6 @@ export function Hero() {
     };
   }, []);
 
-  const format = (value: string) => {
-    const [year, month, day] = value.split("-").map(Number);
-    if (!year || !month || !day) return "—";
-    return new Date(year, month - 1, day).toLocaleDateString(lang === "bn" ? "bn-BD" : "en-GB", {
-      weekday: "short",
-      day: "numeric",
-      month: "short",
-    });
-  };
-
-  const guestLabel =
-    lang === "bn"
-      ? `${adults.toLocaleString("bn-BD")} জন প্রাপ্তবয়স্ক${children ? `, ${children.toLocaleString("bn-BD")} শিশু` : ""}`
-      : `${adults} adult${adults > 1 ? "s" : ""}${children ? `, ${children} child${children > 1 ? "ren" : ""}` : ""}`;
-
-  function submit() {
-    const start = new Date(checkIn);
-    const end = new Date(checkOut);
-    const nights = Math.max(1, Math.round((end.getTime() - start.getTime()) / 86400000));
-    setToast(lang === "bn" ? `${nights.toLocaleString("bn-BD")} রাতের জন্য ভিলা খুঁজছি` : `Looking up villas for ${nights} night${nights > 1 ? "s" : ""}`);
-    router.push(`/villas?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}`);
-  }
-
   const words = lang === "bn"
     ? ["আপনার", "নিজের", "দ্বীপ,", "যেখানে", "সময়", "রাখে"]
     : ["Your", "own", "island,", "where", "the", "sea", "keeps"];
@@ -120,13 +76,21 @@ export function Hero() {
   return (
     <section className="hero" id="hero" ref={heroRef}>
       <div id="preloader" aria-hidden="true">
-        <div style={{ textAlign: "center" }}>
+        <div className="pl-scene">
+          <div className="pl-orbit">
+            <span className="pl-ring r1" />
+            <span className="pl-ring r2" />
+            <span className="pl-sun" />
+            <span className="pl-arm"><span className="pl-dot" /></span>
+          </div>
+          <svg className="pl-waves" viewBox="0 0 220 48" fill="none">
+            <path className="w1" d="M4 18c18 10 28 10 46 0s28-10 46 0 28 10 46 0 28-10 46 0 22 10 28 8" />
+            <path className="w2" d="M4 32c18 8 28 8 46 0s28-8 46 0 28 8 46 0 28-8 46 0 22 8 28 6" />
+          </svg>
           <div className="pl-name">SUNDROP</div>
           <div className="pl-sub">ECO RESORT</div>
         </div>
-        <div className="pl-bar" style={{ width: 180, height: 1, background: "rgba(255,255,255,.15)", overflow: "hidden" }}>
-          <i style={{ display: "block", height: "100%", width: "100%", background: "var(--gold)", transform: "scaleX(0)", transformOrigin: "left" }} />
-        </div>
+        <div className="pl-bar"><i /></div>
       </div>
       <div className="hero-media">
         <Image id="heroImg" src={photos.hero} alt="Overwater villas above a calm lagoon at sunset" fill priority sizes="100vw" style={{ objectFit: "cover", transform: "scale(1.06)" }} />
@@ -163,68 +127,11 @@ export function Hero() {
             "এই ডেমোতে চব্বিশটি জলের উপর ও বাগান ভিলা — খুঁজুন, ঘর বেছে নিন, একটি রেফারেন্স পান। অ্যাকাউন্ট লাগবে না।",
           )}
         </p>
-        <form
-          className="search"
-          onSubmit={(event) => {
-            event.preventDefault();
-            submit();
-          }}
-        >
-          <label className="cell">
-            <div>
-              <small>{t("Check-in", "চেক-ইন")}</small>
-              <span className="v">{format(checkIn)}</span>
-            </div>
-            <input type="date" aria-label={t("Check-in date", "চেক-ইনের তারিখ")} min={iso(today)} value={checkIn} onChange={(event) => {
-              const next = event.target.value || defaults.checkIn;
-              setCheckIn(next);
-              if (next >= checkOut) {
-                const end = new Date(next);
-                end.setDate(end.getDate() + 3);
-                setCheckOut(iso(end));
-              }
-            }} />
-          </label>
-          <label className="cell">
-            <div>
-              <small>{t("Check-out", "চেক-আউট")}</small>
-              <span className="v">{format(checkOut)}</span>
-            </div>
-            <input type="date" aria-label={t("Check-out date", "চেক-আউটের তারিখ")} min={checkIn} value={checkOut} onChange={(event) => setCheckOut(event.target.value || defaults.checkOut)} />
-          </label>
-          <div className="cell" role="button" tabIndex={0} aria-expanded={open} onClick={() => setOpen((value) => !value)} onKeyDown={(event) => {
-            if (event.key === "Enter" || event.key === " ") {
-              event.preventDefault();
-              setOpen((value) => !value);
-            }
-          }}>
-            <div>
-              <small>{t("Guests", "অতিথি")}</small>
-              <span className="v">{guestLabel}</span>
-            </div>
-            <div className={`guests-pop ${open ? "open" : ""}`} onClick={(event) => event.stopPropagation()}>
-              <div className="gp-row">
-                <div><b>{t("Adults", "প্রাপ্তবয়স্ক")}</b><em>{t("Age 13+", "১৩+ বছর")}</em></div>
-                <div className="step">
-                  <button type="button" aria-label={t("Fewer adults", "কম প্রাপ্তবয়স্ক")} onClick={() => setAdults((n) => Math.max(1, n - 1))}>−</button>
-                  <output>{lang === "bn" ? adults.toLocaleString("bn-BD") : adults}</output>
-                  <button type="button" aria-label={t("More adults", "আরও প্রাপ্তবয়স্ক")} onClick={() => setAdults((n) => Math.min(6, n + 1))}>+</button>
-                </div>
-              </div>
-              <div className="gp-row">
-                <div><b>{t("Children", "শিশু")}</b><em>{t("Age 2–12", "২–১২ বছর")}</em></div>
-                <div className="step">
-                  <button type="button" aria-label={t("Fewer children", "কম শিশু")} onClick={() => setChildren((n) => Math.max(0, n - 1))}>−</button>
-                  <output>{lang === "bn" ? children.toLocaleString("bn-BD") : children}</output>
-                  <button type="button" aria-label={t("More children", "আরও শিশু")} onClick={() => setChildren((n) => Math.min(4, n + 1))}>+</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Button type="submit" size="lg">
-            {t("Check availability", "খালি আছে কিনা দেখুন")} <ArrowRight />
-          </Button>
-        </form>
+        <SearchBar
+          className="hero-search"
+          initial={{ ...defaults, adults: 2, children: 0 }}
+          onSearch={(count) => setToast(lang === "bn" ? `${count.toLocaleString("bn-BD")} রাতের জন্য ভিলা খুঁজছি` : `Looking up villas for ${count} night${count > 1 ? "s" : ""}`)}
+        />
       </div>
       <div className="hero-foot">
         <div className="wrap">

@@ -1,10 +1,18 @@
 "use client";
 
 import { useI18n } from "@sundrop/ui";
+import { useRouter } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
 
 export function LangToggle({ light = true }: { light?: boolean }) {
-  const { lang, setLang } = useI18n();
+  const { lang, setLang: setClientLang } = useI18n();
+  const router = useRouter();
+  // Server-rendered pages read the cookie, so re-render them after switching.
+  const setLang = (next: "en" | "bn") => {
+    if (next === lang) return;
+    setClientLang(next);
+    router.refresh();
+  };
   const ref = useRef<HTMLDivElement>(null);
   const [knob, setKnob] = useState({ width: 34, x: 0 });
 

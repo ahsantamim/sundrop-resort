@@ -1,14 +1,24 @@
-import { getRepo, nightCount } from "@sundrop/data";
-import { formatBdt } from "@sundrop/ui";
+import { getRepo } from "@sundrop/data";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { cookies } from "next/headers";
+import { PageBanner } from "@/components/chrome/page-banner";
+import { ReserveCard } from "@/components/villas/reserve-card";
+import { addDays, todayIso } from "@/lib/dates";
+import { getLang } from "@/lib/lang";
+import { Scenery } from "@/components/chrome/scenery";
 
 function one(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
 }
+
+// Bento spans for 1–4 villa photos.
+const PHOTO_SPANS: Record<number, string[]> = {
+  1: ["s12 r2"],
+  2: ["s8 r2", "s4 r2"],
+  3: ["s8 r2", "s4", "s4"],
+  4: ["s6 r2", "s6", "s3", "s3"],
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -27,52 +37,84 @@ export default async function VillaPage({
   const sp = await searchParams;
   const villa = await getRepo().getVilla(slug);
   if (!villa) notFound();
-  const jar = await cookies();
-  const lang = jar.get("lang")?.value === "bn" ? "bn" : "en";
-  const checkIn = one(sp.checkIn);
-  const checkOut = one(sp.checkOut);
-  const adults = one(sp.adults) || "2";
-  const children = one(sp.children) || "0";
-  const nights = checkIn && checkOut ? nightCount(checkIn, checkOut) : 0;
-  const total = nights > 0 ? nights * villa.pricePerNight : villa.pricePerNight;
-  const book = new URLSearchParams({ villa: villa.slug, adults, children });
-  if (checkIn) book.set("checkIn", checkIn);
-  if (checkOut) book.set("checkOut", checkOut);
+  const { lang, t } = await getLang();
+  const today = todayIso();
+  const blocked = await getRepo().blockedDates(villa.slug, today, addDays(today, 430));
+  const photos = villa.images.slice(0, 4);
+  const spans = PHOTO_SPANS[photos.length] ?? [];
 
   return (
-    <main className="page-hero" style={{ paddingBottom: 80 }}>
-      <div className="wrap">
-        <span className="over">{lang === "bn" ? "ভিলা" : "Villas"} / {lang === "bn" ? villa.nameBn : villa.name}</span>
-        <h1>{lang === "bn" ? villa.nameBn : villa.name}</h1>
-        <p className="lede">{villa.sizeM2} m² · {lang === "bn" ? villa.bedBn : villa.bed} · {lang === "bn" ? `${villa.guests} জন` : `Sleeps ${villa.guests}`}</p>
-        <div className="gallery" style={{ marginTop: 28 }}>
-          {villa.images.slice(0, 4).map((photo, index) => (
-            <figure className={`photo ${["g1", "g2", "g3", "g4"][index]}`} key={photo.src}>
-              <Image src={photo.src} alt={lang === "bn" ? photo.altBn : photo.alt} fill sizes="50vw" />
-            </figure>
-          ))}
-        </div>
-        <div className="amen-grid" style={{ marginTop: 48 }}>
-          <div>
-            <h2>{lang === "bn" ? "একটি নমুনা ডেক" : "A sample deck"}</h2>
-            <p className="lede">{lang === "bn" ? villa.detailsBn : villa.details}</p>
-            <ul>
-              {villa.amenities.map((item) => (
-                <li key={item.en}>{lang === "bn" ? item.bn : item.en}</li>
-              ))}
-            </ul>
-            <p className="sample" style={{ marginTop: 18 }}>{lang === "bn" ? "নমুনা বিবরণ" : "Sample description"}</p>
+    <main>
+      <PageBanner
+        image={villa.image}
+        alt={t(villa.images[0]?.alt ?? villa.name, villa.images[0]?.altBn ?? villa.nameBn)}
+        eyebrow={t(villa.category, villa.categoryBn)}
+        title={t(villa.name, villa.nameBn)}
+        lede={t(villa.blurb, villa.blurbBn)}
+      />
+      <section className="sec tight">
+        <Scenery />
+        <div className="wrap">
+          <div className="bento rows pairs">
+            {photos.map((photo, index) => (
+              <figure className={`tile media ${spans[index]}`} key={photo.src} style={{ margin: 0 }}>
+                <div className="photo"><Image src={photo.src} alt={t(photo.alt, photo.altBn)} fill sizes="(max-width: 760px) 100vw, 50vw" /></div>
+              </figure>
+            ))}
           </div>
-          <aside className="ip-card" style={{ background: "#fff", color: "var(--ink)", position: "sticky", top: 120 }}>
-            <div className="sample">{lang === "bn" ? "নমুনা ভাড়া" : "Sample rate"}</div>
-            <div className="price" style={{ marginTop: 8 }}>{formatBdt(villa.pricePerNight, lang)}<small>{lang === "bn" ? "/ রাত" : "/ night"}</small></div>
-            <p className="help">{checkIn && checkOut ? `${checkIn} → ${checkOut}` : lang === "bn" ? "তারিখ বুকিং ধাপে বেছে নেবেন।" : "Choose dates in the booking flow."}</p>
-            <p><b>{nights > 0 ? formatBdt(total, lang) : "—"}</b> {nights > 0 ? <span className="help">{lang === "bn" ? `${nights} রাত` : `${nights} nights · sample total`}</span> : null}</p>
-            <p className="help">{lang === "bn" ? "এখন কোনো পেমেন্ট নেই। রেফারেন্স পেলে বুকিং অপেক্ষমাণ থাকে।" : "No payment now. A confirmed request stays pending until the admin demo accepts it."}</p>
-            <Link href={`/book?${book}`} className="more" style={{ marginTop: 12 }}>{lang === "bn" ? "রিজার্ভ করুন — লগইন লাগবে না" : "Reserve — no login needed"} →</Link>
-          </aside>
+          <div className="book-layout reserve-first" style={{ marginTop: "clamp(16px, 2vw, 26px)" }}>
+            <div className="bento">
+              <article className="tile s12 sand">
+                <span className="over">{t("The villa", "ভিলা")}</span>
+                <h3 className="serif-swap">{t("A sample deck, facing west.", "পশ্চিমমুখী একটি নমুনা ডেক।")}</h3>
+                <p className="lede">{t(villa.details, villa.detailsBn)}</p>
+                <span className="sample" style={{ alignSelf: "flex-start" }}>{t("Sample description", "নমুনা বিবরণ")}</span>
+              </article>
+              {[
+                [`${villa.sizeM2}`, t("m² of floor, deck included", "বর্গমিটার, ডেকসহ")],
+                [`${villa.guests}`, t(`guests · ${villa.bed}`, `জন · ${villa.bedBn}`)],
+                [`${villa.units}`, t("sample keys of this type", "এই ধরনের নমুনা কী")],
+              ].map(([value, label]) => (
+                <div className="tile" key={label}>
+                  <span className="num">{lang === "bn" ? Number(value).toLocaleString("bn-BD") : value}</span>
+                  <span>{label}</span>
+                </div>
+              ))}
+              <article className="tile s12">
+                <span className="over">{t("In the villa", "ভিলায় যা আছে")}</span>
+                <ul className="ticks">
+                  {villa.amenities.map((item) => <li key={item.en}>{t(item.en, item.bn)}</li>)}
+                </ul>
+              </article>
+              <article className="tile s12 teal">
+                <span className="over">{t("Good to know", "জেনে রাখুন")}</span>
+                <dl className="kv" style={{ color: "var(--ivory)" }}>
+                  {[
+                    [t("Check-in", "চেক-ইন"), t("From 2:00 pm", "দুপুর ২টা থেকে")],
+                    [t("Check-out", "চেক-আউট"), t("By 12:00 pm", "দুপুর ১২টার মধ্যে")],
+                    [t("Cancellation", "বাতিল"), t("Free until 72 hours before", "৭২ ঘণ্টা আগে পর্যন্ত বিনামূল্যে")],
+                    [t("Getting here", "যাতায়াত"), t("Speedboat from Teknaf · sample", "টেকনাফ থেকে স্পিডবোট · নমুনা")],
+                  ].map(([label, value]) => (
+                    <div key={label} style={{ borderColor: "rgba(255,255,255,.14)" }}><dt style={{ color: "var(--teal-100)" }}>{label}</dt><dd>{value}</dd></div>
+                  ))}
+                </dl>
+              </article>
+            </div>
+            <aside className="sticky-card">
+              <ReserveCard
+                villa={villa}
+                blocked={blocked}
+                initial={{
+                  checkIn: one(sp.checkIn) ?? "",
+                  checkOut: one(sp.checkOut) ?? "",
+                  adults: Number(one(sp.adults) || 2),
+                  children: Number(one(sp.children) || 0),
+                }}
+              />
+            </aside>
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

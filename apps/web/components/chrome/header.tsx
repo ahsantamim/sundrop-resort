@@ -15,15 +15,19 @@ const links = [
   { href: "/contact", en: "Contact", bn: "যোগাযোগ" },
 ];
 
+// Pages that open on a full-bleed photo (hero or PageBanner) get the transparent nav.
+const PHOTO_TOPS = ["/villas", "/experiences", "/dining", "/gallery", "/about", "/contact", "/invest"];
+
 export function Header() {
   const { t } = useI18n();
   const pathname = usePathname();
-  const home = pathname === "/";
-  const [solid, setSolid] = useState(!home);
+  const overPhoto = pathname === "/" || PHOTO_TOPS.some((path) => pathname.startsWith(path));
+  const invest = pathname.startsWith("/invest");
+  const [solid, setSolid] = useState(!overPhoto);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (!home) {
+    if (!overPhoto) {
       setSolid(true);
       return;
     }
@@ -31,12 +35,12 @@ export function Header() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [home]);
+  }, [overPhoto]);
 
   useEffect(() => setOpen(false), [pathname]);
 
   return (
-    <header className={`nav ${home ? (solid ? "solid" : "") : "page"}`} id="nav">
+    <header className={`nav ${invest ? "nav-invest" : ""} ${overPhoto ? (solid ? "solid" : "") : "page"}`} id="nav">
       <div className="wrap">
         <Link href="/" className="brand" aria-label="SUNDROP Eco Resort home">
           <Mark />

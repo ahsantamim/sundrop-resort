@@ -4,13 +4,10 @@ import { photos } from "@sundrop/data/images";
 import { Button, useI18n } from "@sundrop/ui";
 import Image from "next/image";
 import Link from "next/link";
+import { CtaBand } from "@/components/chrome/page-banner";
+import { sampleDay } from "@/lib/content";
 
-const frames = [
-  { src: photos.walkways, className: "g1", en: "06:10 · First light on the walkways", bn: "০৬:১০ · ভোরের আলো", alt: "Aerial of overwater walkways" },
-  { src: photos.boats, className: "g2", en: "11:00 · Saint Martin’s boats", bn: "১১:০০ · সেন্ট মার্টিনের নৌকা", alt: "Wooden boats on the Saint Martin’s shore" },
-  { src: photos.bedroom, className: "g3", en: "14:30 · Siesta", bn: "১৪:৩০ · দুপুরের বিশ্রাম", alt: "A bright bedroom" },
-  { src: photos.nightPool, className: "g4", en: "21:00 · Pool under the stars", bn: "২১:০০ · তারার নিচে পুল", alt: "Pool at night" },
-];
+const spans = ["g1", "g2", "g3", "g4"];
 
 export function Closing() {
   const { t } = useI18n();
@@ -54,8 +51,8 @@ export function Closing() {
             <Button asChild variant="ghost" size="sm"><Link href="/gallery">{t("Open full gallery", "পুরো গ্যালারি")}</Link></Button>
           </div>
           <div className="gallery">
-            {frames.map((frame) => (
-              <figure className={`photo ${frame.className}`} key={frame.className}>
+            {sampleDay.map((frame, index) => (
+              <figure className={`photo ${spans[index]}`} key={frame.src}>
                 <Image src={frame.src} alt={frame.alt} fill sizes="(max-width: 760px) 100vw, 40vw" loading="eager" />
                 <figcaption>{t(frame.en, frame.bn)}</figcaption>
               </figure>
@@ -63,25 +60,15 @@ export function Closing() {
           </div>
         </div>
       </section>
-      <section className="cta" id="contact">
-        <div className="wrap">
-          <div className="cta-box">
-            <div className="photo"><Image src={photos.beach} alt="Calm sea at sunrise" fill sizes="100vw" loading="eager" /></div>
-            <div className="shade" />
-            <div className="cta-in">
-              <div>
-                <span className="over">{t("Plan your escape", "ছুটির পরিকল্পনা")}</span>
-                <h2 className="serif-swap">{t("Talk to a real person on the island.", "দ্বীপের একজন মানুষের সাথে কথা বলুন।")}</h2>
-                <p>{t("In this demo the desk does not send messages. Use the contact form, or continue a booking and keep the private link.", "এই ডেমোতে ডেস্ক বার্তা পাঠায় না। যোগাযোগ ফর্ম ব্যবহার করুন, অথবা বুকিং চালিয়ে ব্যক্তিগত লিংক রাখুন।")}</p>
-              </div>
-              <div className="stack">
-                <Button asChild variant="accent"><Link href="/contact">{t("Sample desk · +880 1711-000 245", "নমুনা ডেস্ক · +৮৮০ ১৭১১-০০০ ২৪৫")}</Link></Button>
-                <Button asChild variant="ghostLight"><Link href="/contact">stay@sundrop.demo</Link></Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CtaBand
+        image={photos.beach}
+        eyebrow={t("Plan your escape", "ছুটির পরিকল্পনা")}
+        title={t("Talk to a real person on the island.", "দ্বীপের একজন মানুষের সাথে কথা বলুন।")}
+        copy={t("In this demo the desk does not send messages. Use the contact form, or continue a booking and keep the private link.", "এই ডেমোতে ডেস্ক বার্তা পাঠায় না। যোগাযোগ ফর্ম ব্যবহার করুন, অথবা বুকিং চালিয়ে ব্যক্তিগত লিংক রাখুন।")}
+      >
+        <Button asChild variant="accent"><Link href="/contact">{t("Sample desk · +880 1711-000 245", "নমুনা ডেস্ক · +৮৮০ ১৭১১-০০০ ২৪৫")}</Link></Button>
+        <Button asChild variant="ghostLight"><Link href="/contact">stay@sundrop.demo</Link></Button>
+      </CtaBand>
     </>
   );
 }
