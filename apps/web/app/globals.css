@@ -58,6 +58,7 @@ html[lang="bn"] .sample { letter-spacing: 0.02em; }
 .nav .wrap { height: 92px; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px; transition: height 0.4s var(--ease); }
 .nav.solid, .nav.page { background: rgba(11, 79, 74, 0.94); backdrop-filter: blur(14px); box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.4); }
 .nav.nav-invest.solid, .nav.nav-invest.page { background: rgba(15, 30, 46, 0.94); box-shadow: 0 16px 36px -22px rgba(0, 0, 0, 0.7); }
+.nav.menu-open, .nav.solid.menu-open, .nav.page.menu-open, .nav.nav-invest.menu-open, .nav.nav-invest.solid.menu-open, .nav.nav-invest.page.menu-open { background: var(--teal-900); backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.4); }
 .nav.solid .wrap { height: 74px; }
 .links { grid-column: 2; display: flex; align-items: center; justify-self: center; gap: clamp(16px, 2vw, 32px); font-size: 14.5px; font-weight: 600; color: rgba(255, 255, 255, 0.88); }
 .links a { position: relative; display: inline-flex; align-items: center; height: 36px; padding: 0; line-height: 1; }
@@ -274,8 +275,8 @@ footer.site { background: var(--navy); color: var(--sand-400); }
 .progress { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 8px 0 18px; }
 .progress i { height: 4px; border-radius: 99px; background: var(--line); }
 .progress i.on { background: var(--coral); }
-.mobile-drawer { position: fixed; inset: 0; z-index: 60; background: rgba(15, 30, 46, 0.45); }
-.mobile-panel { margin-left: auto; width: min(360px, 88vw); height: 100%; background: var(--teal-900); color: white; padding: 28px 22px; display: flex; flex-direction: column; gap: 16px; }
+.mobile-panel { background: var(--teal-900); color: #fff; padding: 6px var(--pad) 22px; display: flex; flex-direction: column; gap: 4px; }
+.mobile-panel a { color: #fff; font-family: var(--serif); font-size: 22px; line-height: 1.25; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.16); }
 #preloader { position: fixed; inset: 0; z-index: 100; background: radial-gradient(120% 80% at 50% 18%, #1a3a52 0%, var(--navy) 46%, #081018 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px; color: var(--ivory); overflow: hidden; }
 #preloader::before, #preloader::after { content: ""; position: absolute; left: -10%; right: -10%; height: 18vh; pointer-events: none; }
 #preloader::before { top: 8%; background: radial-gradient(ellipse at center, rgba(227, 203, 122, 0.22), transparent 68%); animation: pl-glow 3.2s ease-in-out infinite; }
